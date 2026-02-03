@@ -38,11 +38,20 @@
             "backgroundColor": "#000000"
           }
         }
-      ]
+      ],
+      // "expo-sqlite"
     ],
     "experiments": {
       "typedRoutes": true,
-      "reactCompiler": true
+      "reactCompiler": true,
+
+      "splash": {
+      "image": "./assets/splash-native.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1F2937"
+
+    },
+     "assetBundlePatterns": ["**/*"]
     }
   }
 }

@@ -1,24 +1,27 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
+import { Stack, useRouter } from "expo-router"
+import { useEffect } from "react"
+import * as SplashScreen from "expo-splash-screen"
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
+// Empêche disparition auto
+SplashScreen.preventAutoHideAsync()
 
-export const unstable_settings = {
-  anchor: '(tabs)',
-};
+export default function Layout() {
+  const router = useRouter()
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
+  useEffect(() => {
+    async function prepare() {
+      // Petite pause pour être safe
+      await new Promise(resolve => setTimeout(resolve, 500))
 
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+      // Cache splash natif
+      await SplashScreen.hideAsync()
+
+      // Go splash React
+      router.replace("/splash")
+    }
+
+    prepare()
+  }, [])
+
+  return <Stack screenOptions={{ headerShown: false }} />
 }
