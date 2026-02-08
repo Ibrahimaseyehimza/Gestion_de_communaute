@@ -10,6 +10,7 @@ import { useState } from "react"
 import { useRouter } from "expo-router"
 import { Ionicons } from "@expo/vector-icons"
 import Checkbox from "expo-checkbox"
+import PrimaryButton from "@/components/primaryButton"
 
 export default function Register() {
   const router = useRouter()
@@ -140,24 +141,14 @@ export default function Register() {
           </Text>
         </View>
 
-        {/* Button */}
-        {/* <TouchableOpacity style={styles.mainButton}>
+        <TouchableOpacity style={styles.mainButton} onPress={() => router.push("/register-otp")}>
           <Text style={styles.mainButtonText}>Recevoir le code</Text>
-        </TouchableOpacity> */}
-        <Button 
-        // style={styles.mainButton}
-        color="#E6D3A3"
-        title="S'inscrire" 
-        onPress={() => 
-        // router.push("/register-success")
-        router.push("/register-otp")
-        } 
-        />
+        </TouchableOpacity>
 
         {/* Login */}
-        <Text style={{ textAlign: "center", marginTop: 12 }}>
-          Vous avez déjà un compte ?
-        </Text>
+        <TouchableOpacity onPress={() => router.push("/login")}>
+          <Text style={{ textAlign: "center", marginTop: 12 }}>Vous avez déjà un compte ?</Text>
+        </TouchableOpacity>
 
         <TouchableOpacity onPress={() => router.push("/login")}>
           <Text style={styles.login}>Se connecter</Text>
@@ -172,15 +163,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#ECE8D8",
     // justifyContent: "center",
-    paddingTop: 50,
+    paddingTop: 40,
     padding: 16,
     
   },
 
   card: {
     backgroundColor: "white",
-    borderRadius: 24,
-    padding: 20
+    borderRadius: 5,
+    padding: 30
   },
 
   header: {
