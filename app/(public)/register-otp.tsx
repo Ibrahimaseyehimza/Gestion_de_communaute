@@ -53,6 +53,11 @@ export default function registerOtp() {
                     <Text style={styles.mainButtonText}>S'inscrire</Text>
 
                 </TouchableOpacity>
+
+                 <Button
+                    title="Test Admin"
+                    onPress={() => router.replace("/admin/dashboard")}
+                  />
                 
               </View>
         </View>

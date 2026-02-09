@@ -135,9 +135,24 @@ export default function Register() {
         {/* Checkbox */}
         <View style={styles.checkboxRow}>
           <Checkbox value={accepted} onValueChange={setAccepted} />
-          <Text style={styles.checkboxText}>
+          {/* Ce approche est interdit en react native */}
+          {/* <Text style={styles.checkboxText}>
             J'accepte les <a href="#">Conditions d'utilisation</a> et la réception de notifications via l'application, WhatsApp et SMS
-          </Text>
+          </Text> */}
+            {/* Approche recommandée pour React Native (sans lien cliquable dans le texte, mais avec une partie du texte stylisée et cliquable) : */}
+          <Text style={styles.checkboxText}>
+            J'accepte les{" "}
+            <Text 
+              style={{ color: "#C49A3A", textDecorationLine: "underline" }}
+              onPress={() => {
+                // Ouvrir les conditions d'utilisation
+                console.log("Ouvrir les conditions")
+              }}
+            >
+              Conditions d'utilisation
+            </Text>
+            {" "}et la réception de notifications via l'application, WhatsApp et SMS
+        </Text>
         </View>
 
         {/* Button */}
@@ -153,6 +168,9 @@ export default function Register() {
         router.push("/register-otp")
         } 
         />
+
+       
+
 
         {/* Login */}
         <Text style={{ textAlign: "center", marginTop: 12 }}>

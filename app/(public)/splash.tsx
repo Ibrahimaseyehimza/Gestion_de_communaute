@@ -9,7 +9,7 @@ export default function Splash() {
     const timer = setTimeout(() => {
       router.replace("/")
     // }, 2000)
-    }, 3000)
+    }, 30000)
 
     return () => clearTimeout(timer)
   }, [])
